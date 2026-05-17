@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Last Lantern</title>
+<script type="module" src="/src/main.ts"></script>
+</head>
+<body>
+<canvas id="ember-canvas"></canvas>
+<div id="app">
+  <header id="header">
+    <div class="logo">LAST <span>LANTERN</span></div>
+    <div style="width:1px;height:28px;background:var(--border);margin:0 4px"></div>
+    <div class="pressure-bar">
+      <div class="pressure-label"><span>WORLD PRESSURE</span><span id="pressure-pct">38%</span></div>
+      <div class="pressure-track"><div class="pressure-fill" id="pressure-fill" style="width:38%"></div></div>
+    </div>
+    <div class="header-stats">
+      <div class="hstat"><span class="hstat-val" id="stat-souls">847</span><span class="hstat-label">REMNANT SOULS</span></div>
+      <div class="hstat"><span class="hstat-val" id="stat-heroes">6</span><span class="hstat-label">HEROES</span></div>
+      <div class="hstat"><span class="hstat-val" id="stat-expeditions">0</span><span class="hstat-label">ACTIVE</span></div>
+      <div class="hstat"><span class="hstat-val" style="color:var(--ember)" id="stat-day">Day 34</span><span class="hstat-label">SINCE THE FALL</span></div>
+    </div>
+  </header>
+  <aside id="settlement-panel">
+    <div class="panel-title">The Settlement</div>
+    <div class="building-grid" id="building-list"></div>
+  </aside>
+  <main id="expedition-view">
+    <canvas id="dungeon-canvas"></canvas>
+    <div class="dungeon-lore" id="dungeon-lore">The Lantern holds.</div>
+    <div class="expedition-overlay">
+      <div class="expedition-info">
+        <div class="expedition-name" id="exp-name">NO ACTIVE EXPEDITION</div>
+        <div class="expedition-timer" id="exp-timer">--:--</div>
+        <div class="expedition-haul" id="exp-haul">HAUL: --</div>
+        <div class="expedition-phase" id="exp-phase">Send a party forth to begin.</div>
+        <div class="expedition-decision" id="exp-decision"></div>
+      </div>
+      <div class="expedition-actions">
+        <button class="exp-btn" onclick="doLanternPulse()">⚡ Emergency Pulse</button>
+        <button class="exp-btn" onclick="doRetreat()">↩ Sound Retreat</button>
+        <button class="exp-btn danger" onclick="doAbandon()">✕ Abandon Expedition</button>
+      </div>
+    </div>
+    <div class="event-log" id="event-log"></div>
+  </main>
+  <aside id="hero-panel">
+    <div class="panel-title">Hero Roster</div>
+    <div id="hero-list"></div>
+    <button class="recruit-btn" onclick="showModal('recruit')">+ Seek New Recruits</button>
+  </aside>
+  <footer id="bottom-bar">
+    <!-- Formation slots -->
+    <div class="bottom-section" style="flex:1.4">
+      <div class="bottom-section-title">Formation <button class="mini-action" onclick="autoFillParty()">AUTO FILL</button></div>
+      <div id="formation-slots" style="display:flex;gap:6px;align-items:flex-end"></div>
+      <div id="synergy-bar" style="margin-top:6px"></div>
+    </div>
+    <!-- Destination -->
+    <div class="bottom-section" style="flex:1">
+      <div class="bottom-section-title">Destination</div>
+      <div class="destination-list" id="destination-list"></div>
+    </div>
+    <!-- Party score + behavior -->
+    <div class="bottom-section" style="flex:0.8">
+      <div class="bottom-section-title">Party Score</div>
+      <div id="party-score-panel"></div>
+      <div style="margin-top:8px;display:flex;flex-direction:column;gap:3px" id="behavior-list"></div>
+    </div>
+    <!-- Launch -->
+    <div class="bottom-section launch-section" style="flex:0.5">
+      <button class="launch-btn" id="launch-btn" disabled onclick="launchExpedition()">◆ SEND FORTH</button>
+      <div class="launch-warning" id="launch-warning">Select party &amp; destination</div>
+    </div>
+  </footer>
+</div>
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-title" id="modal-title"></div>
+    <div class="modal-subtitle" id="modal-subtitle"></div>
+    <div class="modal-body" id="modal-body"></div>
+    <div class="modal-actions" id="modal-actions"></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<div class="save-indicator" id="save-indicator">● SAVED</div>
+</body>
+</html>

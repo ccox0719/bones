@@ -1,0 +1,326 @@
+next:
+
+You are continuing development on “Last Lantern,” a dark fantasy idle autobattler expedition simulator.
+
+The current destination selection system is too simple.
+Right now the player selects a destination from a flat list before launching an expedition.
+
+Replace this with:
+A layered expedition world map inspired by dangerous descent and escalating risk.
+
+GOAL:
+Make destination selection itself feel strategic, atmospheric, and progression-based.
+
+The player should feel:
+“We are choosing how deep into darkness we dare to go.”
+
+==================================================
+CORE DESIGN
+==================================================
+
+Replace flat destination selection with a MAP SCREEN.
+
+The map should contain:
+- regions
+- branching routes
+- layered depth progression
+- escalating danger tiers
+- expedition risk vs reward decisions
+
+The world should feel:
+- hostile
+- ancient
+- partially unknown
+- slowly revealed
+
+==================================================
+MAP STRUCTURE
+==================================================
+
+Design the map like descending layers into danger.
+
+Example structure:
+
+THE OUTSKIRTS
+- abandoned roads
+- low corruption
+- beginner enemies
+
+THE RUINS
+- undead
+- traps
+- moderate corruption
+
+THE CATACOMBS
+- darkness mechanics
+- sanity damage
+- stronger loot
+
+THE SUNKEN DEPTHS
+- elite monsters
+- environmental hazards
+- rare relics
+
+THE BLACK BELOW
+- near-suicidal difficulty
+- legendary rewards
+- permanent corruption risk
+
+Each deeper layer:
+- increases enemy strength
+- increases corruption
+- improves loot quality
+- introduces new mechanics
+
+==================================================
+MAP NAVIGATION
+==================================================
+
+Player should:
+- unlock deeper zones gradually
+- choose how far to push
+- decide whether to retreat early
+- weigh risk vs survival
+
+Routes can branch:
+Example:
+
+Ruins Entrance
+ ├── Forgotten Chapel
+ ├── Flooded Passage
+ │     └── Ancient Vault
+ └── Bone Galleries
+
+Different routes contain:
+- enemy archetypes
+- environmental effects
+- loot biases
+- event probabilities
+
+==================================================
+EXPEDITION DEPTH SYSTEM
+==================================================
+
+Depth is a core mechanic.
+
+Deeper levels should:
+- take longer
+- consume more supplies
+- stress heroes faster
+- increase chance of death
+- increase rarity of rewards
+
+Torchlight and morale should matter more at depth.
+
+Example:
+Depth 1:
+manageable
+
+Depth 5:
+heroes begin panicking
+
+Depth 9:
+corruption spreads rapidly
+
+Depth 12:
+almost nobody returns unchanged
+
+==================================================
+FOG OF WAR
+==================================================
+
+The player should NOT fully know the map.
+
+Implement:
+- hidden nodes
+- unknown encounters
+- unexplored branches
+- scouting mechanics
+
+Some heroes/classes improve scouting.
+
+Examples:
+- reveal adjacent nodes
+- detect traps
+- identify elite encounters
+- locate hidden treasure
+
+==================================================
+REGION IDENTITY
+==================================================
+
+Every region should feel mechanically unique.
+
+Examples:
+
+THE ASH WOODS
+- ambush-heavy
+- low visibility
+- beast enemies
+
+THE IRON CRYPTS
+- armored undead
+- bleed resistance
+- relic-rich
+
+THE HOLLOW CATHEDRAL
+- morale attacks
+- corruption spread
+- high-value relics
+
+THE DEEP TIDE
+- flooding mechanics
+- movement penalties
+- rare alchemy materials
+
+==================================================
+VISUAL DESIGN
+==================================================
+
+The map should feel:
+- hand-drawn
+- oppressive
+- ancient
+- functional
+- readable
+
+Avoid:
+- colorful fantasy maps
+- cartoon adventure visuals
+- clean modern UI
+
+Preferred style:
+- parchment
+- ember glow
+- sketched paths
+- dim node illumination
+- subtle animation
+- fogged unexplored areas
+
+==================================================
+NODE TYPES
+==================================================
+
+Different node categories:
+- Combat
+- Elite
+- Treasure
+- Camp
+- Event
+- Merchant
+- Shrine
+- Boss
+- Corruption Zone
+- Safe Exit
+
+Nodes should visually communicate danger.
+
+==================================================
+EXPEDITION STRUCTURE
+==================================================
+
+An expedition is now:
+- entering the map
+- progressing node-by-node
+- surviving as long as possible
+- deciding when to retreat
+
+This creates:
+- tension
+- emergent storytelling
+- meaningful risk management
+
+==================================================
+RETREAT SYSTEM
+==================================================
+
+Retreat should become critical.
+
+The player should frequently ask:
+“Do I push deeper or leave now?”
+
+Retreating:
+- preserves heroes
+- keeps partial loot
+- sacrifices full-clear rewards
+
+Greed should kill parties.
+
+==================================================
+BOSS DESIGN
+==================================================
+
+Certain deeper routes culminate in bosses.
+
+Bosses should:
+- alter regions permanently
+- unlock deeper layers
+- corrupt surviving heroes
+- drop legendary relics
+
+Boss encounters should feel terrifying and rare.
+
+==================================================
+LONG-TERM PROGRESSION
+==================================================
+
+As the settlement develops:
+- deeper regions unlock
+- scouting improves
+- maps become more reliable
+- expeditions travel farther
+- supply management improves
+
+The world should slowly unfold over dozens of hours.
+
+==================================================
+IMPORTANT GAME FEEL
+==================================================
+
+The map should create:
+- dread
+- curiosity
+- temptation
+- risk management
+
+The player should stare at deeper routes and think:
+
+“We are absolutely not prepared for that…
+but the rewards could save the settlement.”
+
+==================================================
+TECHNICAL GOALS
+==================================================
+
+Create modular systems:
+
+src/world/
+- regions.ts
+- mapGeneration.ts
+- nodes.ts
+- encounters.ts
+
+Map nodes should support:
+- procedural generation
+- branching paths
+- hidden information
+- progression scaling
+
+Expeditions should track:
+- current node
+- depth
+- supplies
+- torchlight
+- corruption pressure
+- route history
+
+==================================================
+FINAL TARGET EXPERIENCE
+==================================================
+
+The game should evolve from:
+“pick a mission”
+
+into:
+
+“descend into a living nightmare and decide how much your heroes are worth risking.”
